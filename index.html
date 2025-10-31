@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Hero Style Section - Large Portfolio Text */
+        .hero-section {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+        }
+
+        .portfolio-text-outline {
+            font-size: 140px;
+            font-weight: 900;
+            line-height: 0.85;
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(167, 139, 250, 0.2);
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            margin-bottom: -60px;
+        }
+
+        .portfolio-text {
+            font-size: 140px;
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -5px;
+            margin-bottom: 40px;
+        }
+
+        .watch-projects-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: 2px solid rgba(167, 139, 250, 0.5);
+            color: #a78bfa;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .watch-projects-btn:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: #7c3aed;
+            transform: scale(1.05);
+        }
+
+        /* Main Content Layout - Photo sa Left, Info sa Right */
+        .main-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
+            margin-top: 80px;
+            align-items: start;
+        }
+
+        /* Left Side - Photo and About */
+        .left-side {
+            position: relative;
+        }
+
+        .photo-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .purple-circle {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+            border-radius: 50%;
+            top: -50px;
+            left: -30px;
+            z-index: 0;
+            filter: blur(60px);
+        }
+
+        .profile-image {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 30px;
+            z-index: 1;
+            border: 3px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .about-me-section {
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-me-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .about-me-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(233, 213, 255, 0.9);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            font-size: 13px;
+            line-height: 2;
+            color: rgba(167, 139, 250, 0.8);
+        }
+
+        .contact-details a {
+            color: #a78bfa;
+            text-decoration: none;
+        }
+
+        .qr-code-box {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 15px;
+            margin: 20px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #7c3aed;
+            font-weight: 700;
+        }
+
+        /* Right Side - Experience, Education, Skills, Software */
+        .right-side {
+            display: grid;
+            gap: 40px;
+        }
+
+        .info-cards-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: rgba(124, 58, 237, 0.05);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .timeline-date {
+            color: rgba(167, 139, 250, 0.6);
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-title {
+            color: #a78bfa;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .timeline-description {
+            color: rgba(233, 213, 255, 0.7);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: rgba(124, 58, 237, 0.05);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+        }
+
+        .skills-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .skill-badge {
+            background: rgba(124, 58, 237, 0.2);
+            border: 2px solid #7c3aed;
+            color: #a78bfa;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .skill-badge:hover {
+            background: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Software Grid */
+        .software-section {
+            background: rgba(124, 58, 237, 0.05);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .software-icon {
+            aspect-ratio: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(124, 58, 237, 0.4);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #a78bfa;
+            transition: all 0.3s;
+            font-family: 'Courier New', monospace;
+        }
+
+        .software-icon:hover {
+            background: #7c3aed;
+            color: white;
+            transform: scale(1.1);
+            border-color: #a78bfa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .portfolio-text, .portfolio-text-outline {
+                font-size: 100px;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .info-cards-row {
+                grid-template-columns: 1fr;
+            }
+
+            .software-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-text, .portfolio-text-outline {
+                font-size: 60px;
+            }
+
+            .software-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <section class="hero-section">
+            <div class="portfolio-text-outline">PORTFOLIO</div>
+            <div class="portfolio-text">PORTFOLIO</div>
+            
+            <a href="#projects" class="watch-projects-btn" style="box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);">
+                Watch my Projects →
+            </a>
+        </section>
+
+        <div class="main-content">
+            <div class="left-side">
+                <div class="photo-container">
+                    <div class="purple-circle" style="animation: pulse 4s ease-in-out infinite;"></div>
+                    <img src="https://image2url.com/images/1761889813101-2bf5660e-7ffd-473f-92fd-52a6f516a352.jpg" alt="Cathlea S. Talagon" class="profile-image">
+                </div>
+
+                <div class="about-me-section">
+                    <h2 class="about-me-title" style="background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ABOUT ME</h2>
+                    
+                    <p class="about-me-text">
+                        Hello, I'm <strong style="color: #ffffff;">Cathlea</strong>! A computer engineer based in 
+                        <strong style="color: #ffffff;">Carmona, Cavite</strong>. I'm passionate about technology 
+                        and driven by a genuine love for what I do.
+                    </p>
+                    
+                    <p class="about-me-text">
+                        I am open to any software related work, whether it's web development, mobile applications, 
+                        embedded systems, or emerging technologies. I consider myself as hard working and easy to adapt.
+                    </p>
+
+                    <div class="contact-details">
+                        📞 09951938595<br>
+                        📍 Bancal, Carmona City, Cavite<br>
+                        📧 <a href="mailto:cathlea.talagon@cvsu.edu.ph">cathlea.talagon@cvsu.edu.ph</a><br>
+                        👤 Cathlea S. Talagon
+                    </div>
+                    <div class="qr-code-box" style="border: 2px solid #7c3aed; padding: 10px;">
+                        <img src="images/qr code.png" alt="QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="info-cards-row">
+                    <div class="info-card">
+                        <span class="card-badge" style="box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);">EXPERIENCE</span>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">3rd Year College</div>
+                            <div class="timeline-title">Personal HTML Website</div>
+                            <div class="timeline-description">Developed a personal portfolio website showcasing my information using HTML and CSS.</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">2nd Year College</div>
+                            <div class="timeline-title">Game Development Project</div>
+                            <div class="timeline-description">Created a game focusing on programming logic and user interaction design as part of coursework.</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Senior High School</div>
+                            <div class="timeline-title">Automatic Segregation Machine</div>
+                            <div class="timeline-description">Research project involving automated waste segregation using Arduino microcontroller and sensors.</div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <span class="card-badge" style="box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);">EDUCATION</span>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">2022 - Present</div>
+                            <div class="timeline-title">Cavite State University - Carmona</div>
+                            <div class="timeline-description">Bachelor of Science in Computer Engineering<br>3rd Year Student</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Graduated 2022</div>
+                            <div class="timeline-title">General Mariano Alvarez Technical Highschool</div>
+                            <div class="timeline-description">Senior High School - STEM Strand</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Graduated 2020</div>
+                            <div class="timeline-title">DR. Catalino Gallego Nave Memorial Highschool</div>
+                            <div class="timeline-description">Junior High School</div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Graduated 2016</div>
+                            <div class="timeline-title">Silvestra Galarpe Melgar Memorial School</div>
+                            <div class="timeline-description">Elementary School</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Section Here -->
+                <div class="skills-section">
+                    <span class="card-badge" style="box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);">SKILLS</span>
+                    
+                    <div class="skills-badges">
+                        <div class="skill-badge" style="background: #7c3aed; color: white;">HTML & CSS</div>
+                        <div class="skill-badge">Python</div>
+                        <div class="skill-badge">C++</div>
+                        <div class="skill-badge">Arduino</div>
+                        <div class="skill-badge">Web Development</div>
+                        <div class="skill-badge">Problem Solving</div>
+                        <div class="skill-badge">VS Code</div>
+                        <div class="skill-badge">Teamwork</div>
+                        <div class="skill-badge">Communication</div>
+                    </div>
+                </div>
+
+                <!-- Software Section Dito-->
+                <div class="software-section">
+                    <span class="card-badge" style="box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);">SOFTWARE</span>
+                    
+                    <div class="software-grid">
+                        <div class="software-icon" style="background: rgba(124, 58, 237, 0.1);">VS</div>
+                        <div class="software-icon" style="background: rgba(124, 58, 237, 0.1);">Ec</div>
+                        <div class="software-icon" style="background: rgba(124, 58, 237, 0.1);">Py</div>
+                        <div class="software-icon" style="background: rgba(124, 58, 237, 0.1);">C++</div>
+                        <div class="software-icon" style="background: rgba(124, 58, 237, 0.1);">Ar</div>
+                        <div class="software-icon" style="background: rgba(124, 58, 237, 0.1);">Ju</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
